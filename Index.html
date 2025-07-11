@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smart Secure Lockers - Revolutionary portable storage solutions for events. Secure, scalable, and seamless locker systems.">
+  <title>Smart Secure Lockers - Revolutionary Event Storage Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+    }
+
+    /* Header */
+    header {
+      background: rgba(12, 35, 64, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #ff8c00;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #ff8c00;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .cta-nav {
+      background: linear-gradient(135deg, #ff8c00, #ff6b35);
+      color: #fff !important;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .cta-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, rgba(12, 35, 64, 0.8), rgba(0, 0, 0, 0.6)),
+                  url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(255, 140, 0, 0.1), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: #e0e0e0;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .hero-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .hero-feature i {
+      color: #ff8c00;
+      font-size: 1.2rem;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* CTA Buttons */
+    .cta-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff8c00, #ff6b35);
+      color: #fff;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      margin: 0 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .cta-primary:hover::before {
+      left: 100%;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);
+    }
+
+    .cta-secondary {
+      display: inline-block;
+      background: transparent;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border: 2px solid #fff;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      margin: 0 1rem;
+    }
+
+    .cta-secondary:hover {
+      background: #fff;
+      color: #0c2340;
+      transform: translateY(-3px);
+    }
+
+    /* Sections */
+    .section {
+      padding: 5rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #0c2340;
+    }
+
+    .section h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #0c2340;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #f0f0f0;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+      background: linear-gradient(135deg, #ff8c00, #ff6b35);
+      color: #fff;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 2rem;
+    }
+
+    .feature-card h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #0c2340;
+    }
+
+    .feature-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Event Types */
+    .event-types {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      padding: 5rem 0;
+      margin: 3rem 0;
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .event-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .event-card i {
+      font-size: 3rem;
+      color: #ff8c00;
+      margin-bottom: 1rem;
+    }
+
+    .event-card h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #0c2340;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #0c2340, #1a4b6b);
+      color: #fff;
+      padding: 5rem 0;
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .cta-section h2 {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff8c00, #ff6b35);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+    }
+
+    /* Stats Section */
+    .stats {
+      background: #f8f9fa;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      padding: 1rem;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #ff8c00;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: #666;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: #0c2340;
+      color: #fff;
+      padding: 3rem 0 1rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .footer-section h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #ff8c00;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: #ccc;
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .footer-section a:hover {
+      color: #ff8c00;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-links a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: #ff8c00;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .hero-features {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .section {
+        padding: 3rem 1rem;
+      }
+
+      .section h2 {
+        font-size: 2rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-primary,
+      .cta-secondary {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    /* Animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-lock"></i> Smart Secure Lockers
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#demo" class="cta-nav">Book Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Smart Secure Lockers</h1>
+      <p class="hero-subtitle">Revolutionary portable storage solutions for events. Secure, scalable, and seamless.</p>
+      
+      <div class="hero-features">
+        <div class="hero-feature">
+          <i class="fas fa-shield-alt"></i>
+          <span>Military-Grade Security</span>
+        </div>
+        <div class="hero-feature">
+          <i class="fas fa-mobile-alt"></i>
+          <span>App-Controlled Access</span>
+        </div>
+        <div class="hero-feature">
+          <i class="fas fa-bolt"></i>
+          <span>30-Second Setup</span>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+        <a href="#demo" class="cta-primary" style="flex: 1; max-width: 250px; text-align: center;">
+          <i class="fas fa-calendar-check"></i> Book Free Demo
+        </a>
+        <a href="#features" class="cta-secondary" style="flex: 1; max-width: 250px; text-align: center;">
+          <i class="fas fa-play"></i> Watch Video
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <h2>Why Choose Smart Secure Lockers?</h2>
+    <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
+      Our cutting-edge locker systems are designed specifically for medium-scale events, providing unmatched security and convenience.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h4>Military-Grade Security</h4>
+        <p>Advanced encryption and biometric locks ensure your belongings are completely secure throughout the event.</p>
+      </div>
+
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-truck"></i>
+        </div>
+        <h4>Fully Portable Units</h4>
+        <p>Easy-to-transport modular design allows rapid deployment at any venue, indoor or outdoor.</p>
+      </div>
+
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </div>
+        <h4>Infinitely Scalable</h4>
+        <p>From intimate gatherings to large festivals - our modular system adapts to any event size.</p>
+      </div>
+
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-stopwatch"></i>
+        </div>
+        <h4>Lightning-Fast Setup</h4>
+        <p>Revolutionary quick-connect system allows full deployment in under 30 seconds per unit.</p>
+      </div>
+
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h4>Smart App Control</h4>
+        <p>Intuitive mobile app for seamless booking, access, and management. Real-time notifications included.</p>
+      </div>
+
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <h4>Strategic Placement</h4>
+        <p>Optimal positioning near event entrances and key areas for maximum attendee convenience.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="event-types" id="events">
+    <div class="section">
+      <h2>Perfect for Every Event Type</h2>
+      <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
+        Our smart lockers enhance security and convenience across all event formats.
+      </p>
+
+      <div class="event-grid">
+        <div class="event-card animate-on-scroll">
+          <i class="fas fa-music"></i>
+          <h4>Music Festivals</h4>
+          <p>Keep phones, wallets, and valuables safe while enjoying the music.</p>
+        </div>
+
+        <div class="event-card animate-on-scroll">
+          <i class="fas fa-dumbbell"></i>
+          <h4>Sports Events</h4>
+          <p>Secure storage for fans attending games and tournaments.</p>
+        </div>
+
+        <div class="event-card animate-on-scroll">
+          <i class="fas fa-briefcase"></i>
+          <h4>Corporate Events</h4>
+          <p>Professional storage solutions for conferences and business gatherings.</p>
+        </div>
+
+        <div class="event-card animate-on-scroll">
+          <i class="fas fa-graduation-cap"></i>
+          <h4>Educational Events</h4>
+          <p>Secure storage for students and faculty at academic gatherings.</p>
+        </div>
+
+        <div class="event-card animate-on-scroll">
+          <i class="fas fa-users"></i>
+          <h4>Community Events</h4>
+          <p>Enhance local festivals and gatherings with convenient storage.</p>
+        </div>
+
+        <div class="event-card animate-on-scroll">
+          <i class="fas fa-star"></i>
+          <h4>VIP Events</h4>
+          <p>Premium storage solutions for exclusive and high-end gatherings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="section">
+      <h2>Trusted by Event Organizers Worldwide</h2>
+      <div class="stats-grid">
+        </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="section">
+      <h2>Ready to Transform Your Event?</h2>
+      <p>Join hundreds of successful event organizers who trust Smart Secure Lockers</p>
+      
+      <div class="cta-buttons">
+        <a href="#demo" class="cta-button">
+          <i class="fas fa-calendar-check"></i> Book Free Demo
+        </a>
+        <a href="#quote" class="cta-button">
+          <i class="fas fa-calculator"></i> Get Instant Quote
+        </a>
+        <a href="#partner" class="cta-button">
+          <i class="fas fa-handshake"></i> Become Partner
+        </a>
+        <a href="#support" class="cta-button">
+          <i class="fas fa-headset"></i> Contact Support
+        </a>
+        <a href="#download" class="cta-button">
+          <i class="fas fa-download"></i> Download Brochure
+        </a>
+        <a href="#video" class="cta-button">
+          <i class="fas fa-play-circle"></i> Watch Demo Video
+        </a>
+        <a href="#trial" class="cta-button">
+          <i class="fas fa-star"></i> Start Free Trial
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div style="text-align: center;">
+      <h2>About Smart Secure Lockers</h2>
+      <p style="font-size: 1.2rem; color: #666; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        We're revolutionizing event storage with cutting-edge technology and unwavering commitment to security. Our mission is to eliminate the stress of carrying valuables at events while providing organizers with seamless, scalable storage solutions.
+      </p>
+      
+      <div style="background: linear-gradient(135deg, #f8f9fa, #ffffff); padding: 4rem; border-radius: 20px; margin-top: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #e9ecef;">
+        <h3 style="color: #0c2340; margin-bottom: 3rem; text-align: center; font-size: 2rem;">Meet Our Visionary Founder</h3>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap;">
+          <div style="width: 200px; height: 200px; background: linear-gradient(135deg, #ff8c00, #ff6b35); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 40px rgba(255,140,0,0.3); position: relative;">
+            <div style="width: 180px; height: 180px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: #0c2340;">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <div style="position: absolute; bottom: 10px; right: 10px; background: #28a745; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(40,167,69,0.4);">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          <div style="text-align: left; max-width: 600px;">
+            <h4 style="color: #ff8c00; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 700;">Manfred Adu-Poku</h4>
+            <p style="color: #0c2340; font-weight: 600; margin-bottom: 1rem; font-size: 1.1rem;">Founder & CEO | Event Security Innovation Expert</p>
+            <p style="color: #666; line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.1rem;">
+              With over **5 years** of pioneering experience in event management and cutting-edge security systems, Manfred has revolutionized how we think about event storage solutions. His passion for creating seamless, worry-free experiences has led to breakthrough innovations that serve hundreds of events worldwide.
+            </p>
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+              <div style="background: #e8f5e8; padding: 0.5rem 1rem; border-radius: 20px; color: #28a745; font-weight: 600;">
+                <i class="fas fa-award"></i> 5 Years Experience
+              </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Contact Information</h4>
+          <p><i class="fas fa-map-marker-alt"></i> Bielefeld, Germany</p>
+          <p><i class="fas fa-envelope"></i> contact@smartsecurelockers.com</p>
+          <p><i class="fas fa-phone"></i> +49 123 456 789</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Services</h4>
+          <p><a href="#demo" onclick="toggleDescription('demo-desc')">Free Demo Booking</a></p>
+          <p id="demo-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Experience our smart locker system firsthand with a personalized demonstration at your venue.</p>
+          <p><a href="#quote" onclick="toggleDescription('quote-desc')">Custom Quotes</a></p>
+          <p id="quote-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Get tailored pricing based on your event size, duration, and specific requirements.</p>
+          <p><a href="#support" onclick="toggleDescription('support-desc')">24/7 Support</a></p>
+          <p id="support-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Round-the-clock technical assistance and customer service for all your needs.</p>
+          <p><a href="#partner" onclick="toggleDescription('partner-desc')">Partnership Program</a></p>
+          <p id="partner-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Join our network of event professionals and earn recurring revenue with our lockers.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <p><a href="#download" onclick="toggleDescription('download-desc')">Download Brochure</a></p>
+          <p id="download-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Comprehensive PDF guide covering features, pricing, and implementation details.</p>
+          <p><a href="#video" onclick="toggleDescription('video-desc')">Demo Videos</a></p>
+          <p id="video-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Watch our smart lockers in action at real events and see the setup process.</p>
+          <p><a href="#case-studies" onclick="toggleDescription('case-desc')">Case Studies</a></p>
+          <p id="case-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Success stories from festivals, corporate events, and sports venues worldwide.</p>
+          <p><a href="#blog" onclick="toggleDescription('blog-desc')">Blog</a></p>
+          <p id="blog-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Latest insights on event security, technology trends, and industry best practices.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <p><a href="#privacy" onclick="toggleDescription('privacy-desc')">Privacy Policy</a></p>
+          <p id="privacy-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">How we collect, use, and protect your personal information and data.</p>
+          <p><a href="#terms" onclick="toggleDescription('terms-desc')">Terms of Service</a></p>
+          <p id="terms-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Legal terms and conditions for using our smart locker services.</p>
+          <p><a href="#imprint" onclick="toggleDescription('imprint-desc')">Imprint</a></p>
+          <p id="imprint-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Official company information and regulatory compliance details.</p>
+          <p><a href="#gdpr" onclick="toggleDescription('gdpr-desc')">GDPR Compliance</a></p>
+          <p id="gdpr-desc" style="font-size: 0.9rem; color: #999; margin-bottom: 1rem; display: none;">Our commitment to European data protection regulations and user rights.</p>
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="#facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+      
+      <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333; color: #ccc;">
+        &copy; 2025 Smart Secure Lockers. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle description visibility
+    function toggleDescription(descId) {
+      const desc = document.getElementById(descId);
+      if (desc.style.display === 'none' || desc.style.display === '') {
+        desc.style.display = 'block';
+        desc.style.animation = 'fadeIn 0.3s ease-in-out';
+      } else {
+        desc.style.display = 'none';
+      }
+    }
+
+    // Add fade-in animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(12, 35, 64, 0.98)';
+      } else {
+        header.style.background = 'rgba(12, 35, 64, 0.95)';
+      }
+    });
+
+    // Animate on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // CTA button click tracking (for demo purposes)
+    document.querySelectorAll('.cta-primary, .cta-secondary, .cta-button').forEach(button => {
+      button.addEventListener('click', function(e) {
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const action = this.textContent.trim();
+          
+          // Demo alert - in production, this would integrate with your booking system
+          if (action.includes('Demo') || action.includes('Quote') || action.includes('Partner')) {
+            alert(`Thanks for your interest! This would normally redirect to our ${action.toLowerCase()} page.`);
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
